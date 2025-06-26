@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>EDU Tutor AI – Learning Platform</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f4f9ff;
+      margin: 0;
+      padding: 20px;
+    }
+
+    .section {
+      background: white;
+      padding: 20px;
+      margin: 20px auto;
+      max-width: 800px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      background-color: #007acc;
+      color: white;
+      padding: 10px;
+      border-radius: 6px;
+      margin-top: 0;
+    }
+
+    button {
+      background-color: #007acc;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 5px;
+      margin-top: 10px;
+      cursor: pointer;
+    }
+
+    input[type="text"], textarea {
+      width: 100%;
+      padding: 8px;
+      margin-top: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    .output-box {
+      background: #e6f4ff;
+      padding: 10px;
+      margin-top: 10px;
+      border-left: 4px solid #007acc;
+      border-radius: 4px;
+    }
+
+    .quiz-option {
+      margin-top: 5px;
+    }
+
+    .chat-message {
+      margin-top: 5px;
+      padding: 6px;
+      background: #f0f0f0;
+      border-left: 3px solid #007acc;
+      border-radius: 3px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 🎮 Educational Game -->
+  <div class="section">
+    <h2>🎮 Educational Game: Quick Math</h2>
+    <p>What is 9 + 4?</p>
+    <button onclick="alert('✅ Correct!')">13</button>
+    <button onclick="alert('❌ Try again.')">15</button>
+    <button onclick="alert('❌ Try again.')">12</button>
+  </div>
+
+  <!-- 🧑‍🏫 Virtual Tutor -->
+  <div class="section">
+    <h2>🧑‍🏫 Virtual Tutor</h2>
+    <label>Ask a question:</label>
+    <input type="text" id="tutor-input" placeholder="e.g., What is gravity?">
+    <button onclick="getTutorResponse()">Get Answer</button>
+    <div id="tutor-response" class="output-box" style="display: none;"></div>
+  </div>
+
+  <!-- ❓ Quiz -->
+  <div class="section">
+    <h2>❓ Quiz: Science</h2>
+    <p>Which planet is known as the Red Planet?</p>
+    <div class="quiz-option"><input type="radio" name="quiz" onclick="showQuizAnswer(true)"> Mars</div>
+    <div class="quiz-option"><input type="radio" name="quiz" onclick="showQuizAnswer(false)"> Venus</div>
+    <div class="quiz-option"><input type="radio" name="quiz" onclick="showQuizAnswer(false)"> Jupiter</div>
+    <div id="quiz-feedback" class="output-box" style="display: none;"></div>
+  </div>
+
+  <!-- 💬 Communication / Collaboration -->
+  <div class="section">
+    <h2>💬 Student Message Board</h2>
+    <input type="text" id="chat-input" placeholder="Type your message here...">
+    <button onclick="postChat()">Post</button>
+    <div id="chat-box" class="output-box"></div>
+  </div>
+
+  <!-- JavaScript Logic -->
+  <script>
+    function getTutorResponse() {
+      const question = document.getElementById("tutor-input").value;
+      const responseBox = document.getElementById("tutor-response");
+      responseBox.innerText = 🤖 AI Tutor: "${question}" is a great question! Here's an explanation (simulated).;
+      responseBox.style.display = "block";
+    }
+
+    function showQuizAnswer(correct) {
+      const feedback = document.getElementById("quiz-feedback");
+      feedback.innerText = correct ? "✅ Correct! Mars is known as the Red Planet." : "❌ Incorrect. Try again!";
+      feedback.style.display = "block";
+    }
+
+    function postChat() {
+      const chatInput = document.getElementById("chat-input");
+      const chatBox = document.getElementById("chat-box");
+      if (chatInput.value.trim() !== "") {
+        const message = document.createElement("div");
+        message.className = "chat-message";
+        message.innerText = "👤 " + chatInput.value;
+        chatBox.appendChild(message);
+        chatInput.value = "";
+      }
+    }
+  </script>
+
+</body>
+</html>
